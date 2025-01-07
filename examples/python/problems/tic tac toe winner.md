@@ -1,0 +1,132 @@
+---
+title: Tic tac toe winner
+---
+
+# Problem Statement
+
+Write a function named tic_tac_toe that accepts a board position as 3 X 3 matrix and returns the winner
+if there is one and -1 if the game ends in a draw or ongoing.
+
+**Example**
+```
+tic_tac_toe([['X', 'O', 'X'], ['O', 'X', 'O'], ['X', 'O', 'X']]) # Output: "X"
+tic_tac_toe([['X', 'O', 'X'], ['O', 'X', 'O'], ['', 'X', 'O']]) # Output: -1
+```
+
+
+# Solution
+
+```py3 test.py -r 'python test.py'
+<template>
+def tic_tac_toe(m: list) -> str:
+    '''
+    Given a 3 X 3 matrix, return 'X', 'O' or -1
+
+    Arguments:
+    m: list - a 3 X 3 list containing 'X', 'O' or ''.
+
+    Return: str - 'X' if player X wins, 'O' if player O wins, or -1 if game is ongoing or ends in a draw.
+    '''
+    <los>...</los>
+    <sol>
+    for i in range(3):
+        if board[i][0] == board[i][1] == board[i][2] != '':
+            return board[i][0]
+        if board[0][i] == board[1][i] == board[2][i] != '':
+            return board[0][i]
+    if board[0][0] == board[1][1] == board[2][2] != '':
+        return board[0][0]
+    if board[0][2] == board[1][1] == board[2][0] != '':
+        return board[0][2]
+    for row in board:
+        if '' in row:
+            return -1
+    return -1  </sol>
+
+</template>
+<suffix_invisible>
+{% include '../function_type_and_modify_check_suffix.py.jinja' %}
+</suffix_invisible>
+```
+
+# Public Test Cases
+
+## Input 1
+
+```
+m = [['X', 'O', 'X'], ['O', 'X', 'O'], ['X', 'O', 'X']]
+is_equal(
+    tic_tac_toe(m),
+    "X"
+)
+```
+
+## Output 1
+
+```
+"X"
+```
+
+## Input 2
+
+```
+m = [['X', 'O', 'X'], ['O', 'X', 'O'], ['', 'X', 'O']]
+is_equal(
+    tic_tac_toe(m),
+    -1
+)
+```
+
+## Output 2
+
+```
+-1
+```
+
+## Input 3
+
+```
+m = [['X', 'X', 'X'], ['', 'O', '-'], ['O', 'O', '']]
+
+is_equal(
+    tic_tac_toe(m),
+    "X"
+)
+```
+
+## Output 3
+
+```
+"X"
+```
+
+# Private Test Cases
+
+## Input 1
+
+```
+m = [['', 'O', 'X'], ['', 'X', 'O'], ['X', 'O', 'X']]
+
+is_equal(
+    tic_tac_toe(m),
+    -1
+)
+m = [['O', 'O', 'O'], ['X', 'X', 'X'], ['X', '', 'O']]
+is_equal(
+    tic_tac_toe(m),
+    "O"
+)
+m = [['', '', ''], ['', '', ''], ['', '', '']]
+is_equal(
+    tic_tac_toe(m),
+    -1
+)
+```
+
+## Output 1
+
+```
+-1
+"O"
+-1
+```
